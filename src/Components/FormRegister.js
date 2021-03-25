@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class FormRegister extends Component {
     state = {
@@ -14,6 +15,26 @@ export default class FormRegister extends Component {
         })
         //console.log(e.target.value);
     }
+
+    onSubmit = async e => {
+        //do no reset when submmit form
+        e.preventDefault()
+        let newUser = {
+                nombre: this.state.name_user,
+                contrasena : this.state.pass_user,
+                usuario: this.state.user
+            }
+
+        //CREATE
+
+        // let headers = this.verifyAccessToken()
+        
+        const res = await axios.post("http://localhost:4000/register", newUser/*, { headers }*/)
+        console.log(res);
+    
+        window.location.href = '/'
+        
+    }
     render() {
         return (
             <div className="row" >
@@ -27,7 +48,6 @@ export default class FormRegister extends Component {
                                     name="name_user"
                                     type="text"
                                     className="form-control"
-                                    value={this.state.name_user}
                                     onChange={this.onChangeInput} 
                                     placeholder="Nombre Apellido"/>
                             </div>
@@ -37,19 +57,17 @@ export default class FormRegister extends Component {
                                     name="pass_user"
                                     type="password"
                                     className="form-control"
-                                    value={this.state.pass_user}
                                     onChange={this.onChangeInput}
                                     placeholder="Password" />
-                            </div>
+                            </div> 
                             <div className="form-group">
                                 Usuario
                                 <input
                                     name="user"
                                     type="text"
                                     className="form-control"
-                                    value={this.state.user}
                                     onChange={this.onChangeInput}
-                                    placeholder="Usuario" />
+                                    placeholder="Usuario"/>
                             </div>
                             <button type="submit" className="btn btn-primary">Ingresar</button>
                         </form>

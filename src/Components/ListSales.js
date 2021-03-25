@@ -9,15 +9,26 @@ export default class ListSales extends Component {
     }
 
     getSales = async () => {
-        const res = await axios.get('http://localhost:4000/ventas')
-        this.setState({ list_sales: res.data.registros })
-        console.log(res.data.registros);
+        //recover from local Storage
+        if (localStorage.getItem('login')) {
+            let dat = JSON.parse(localStorage.getItem('login'))
+            var headers = {
+                token: dat.token
+            }
+            const res = await axios.get('http://localhost:4000/ventas', { headers })
+            this.setState({ list_sales: res.data.registros })
+            
+        } else {
+            //posible message to send
+            window.alert("El usuario no tiene permisos para acceder a esta operación")
+            window.location.href = '/'
+        }
     }
 
     test = async () => {
         console.log(this.state.list_sales);
     }
-    //Allow show function, pedir datos
+    //Allow show function
     async componentDidMount() {
         this.getSales();
     }

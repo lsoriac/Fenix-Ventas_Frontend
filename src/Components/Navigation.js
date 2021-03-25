@@ -2,6 +2,37 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 export default class Navigation extends Component {
+
+    async componentDidMount(){
+        let dat =null
+        //verify if login exists
+        if (localStorage.getItem('login')) {
+            dat= JSON.parse(localStorage.getItem('login'))
+            //console.log(dat.user[0].nombre); 
+        }
+        console.log(dat);
+        if (dat === null) {
+            document.getElementById('register').style.display = 'Block'
+            document.getElementById('login').style.display = 'Block'
+            document.getElementById('sales').style.display = 'None'
+            document.getElementById('close').style.display = 'None'
+        }else{
+            document.getElementById('register').style.display = 'None'
+            document.getElementById('login').style.display = 'None'
+            document.getElementById('sales').style.display = 'Block'
+            document.getElementById('close').style.display = 'Block'
+        }
+    }
+
+    onClickClose = async (id) => {
+        if (localStorage.getItem('login')) {
+            localStorage.removeItem('login');   
+        }else{
+            //window.alert("El usuario no ha iniciado sesión");   
+        }   
+       window.location.href = '/'
+    }
+        
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,8 +55,8 @@ export default class Navigation extends Component {
                             <Link className="navbar-brand" to="/ventas">Ventas
                         </Link>
                         </li>
-                        <li className="nav-item active" id="product">
-                            <Link className="navbar-brand" to="/">Test
+                        <li className="nav-item" id="close" onClick={() => this.onClickClose()}>
+                        <Link className="navbar-brand" to="/">Cerrar Sesión
                         </Link>
                         </li>
                     </ul>

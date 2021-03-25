@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class FormLogin extends Component {
     state = {
-        name_user: '',
-        pass_user: '',
+        user: '',
+        pass_user: ''
     }
 
      //event chance typing
@@ -12,6 +13,38 @@ export default class FormLogin extends Component {
             [e.target.name]: e.target.value
         })
         //console.log(e.target.value);
+    }
+
+    onSubmit = async e => {
+        //do no reset when submmit form
+        //do not reload on React app (No optimal)
+        e.preventDefault()
+        const login = {
+            usuario: this.state.user,
+            contrasena: this.state.pass_user
+        }
+        let error = false
+        let data = {}
+        let res={}
+        try{
+             res = await axios.post("http://localhost:4000/login", login)
+        }catch(err){
+            error= true
+            //console.log(err.response);
+            this.setState({
+                user: "",
+                pass_user: ""
+            })
+        }
+        if (error===false){
+            data = {
+                token: res.data.token,
+                user: res.data.usuario
+            }
+            localStorage.setItem('login', JSON.stringify(data))
+            window.location.href = 'http://localhost:3000/ventas'
+        }
+        
     }
 
     render() {
@@ -24,10 +57,10 @@ export default class FormLogin extends Component {
                             <div className="form-group">
                                 Nombre
                                 <input
-                                    name="name_user"
+                                    name="user"
                                     type="text"
                                     className="form-control"
-                                    value={this.state.name_user}
+                                    value={this.state.user}
                                     onChange={this.onChangeInput} 
                                     placeholder="Nombre Apellido"/>
                             </div>
@@ -36,8 +69,8 @@ export default class FormLogin extends Component {
                                 <input
                                     name="pass_user"
                                     type="password"
-                                    className="form-control"
                                     value={this.state.pass_user}
+                                    className="form-control"
                                     onChange={this.onChangeInput}
                                     placeholder="Password" />
                             </div>

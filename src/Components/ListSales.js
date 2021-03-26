@@ -1,23 +1,51 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { MDBDataTable } from 'mdbreact';
 //import { Link } from 'react-router-dom'
 
 export default class ListSales extends Component {
     state = {
         list_sales: [],
-
+        search: '',
+        params: {}
     }
-
     getSales = async () => {
         //recover from local Storage
         if (localStorage.getItem('login')) {
-            let dat = JSON.parse(localStorage.getItem('login'))
+            let datas = JSON.parse(localStorage.getItem('login'))
             var headers = {
-                token: dat.token
+                token: datas.token
             }
             const res = await axios.get('http://localhost:4000/ventas', { headers })
             this.setState({ list_sales: res.data.registros })
-            
+            const dat = {
+                columns: [
+                  {label: 'codcli',field: 'codcli',sort: 'asc',width: 500},
+                  {label: 'cliente',field: 'cliente'},
+                  {label: 'emision',field: 'emision'},
+                  {label: 'vence',field: 'vence'},
+                  {label: 'totalventas',field: 'totalventas'},
+
+                  {label: 'val',field: 'val'},
+                  {label: 'porcentajetotal',field: 'porcentajetotal'},
+                  {label: 'cantidadlog',field: 'cantidadlog'},
+                  {label: 'cienlog',field: 'cienlog'},
+                  {label: 'porcentajedv',field: 'porcentajedv'},
+
+                  {label: 'pndev',field: 'pndev'},
+                  {label: 'dias',field: 'dias'},
+                  {label: 'diastot',field: 'diastot'},
+                  {label: 'scoring',field: 'scoring'},
+                  {label: 'email',field: 'email'},
+
+                  {label: 'tlf1',field: 'tlf1'},
+                  {label: 'cod_acti',field: 'cod_acti'},
+                  {label: 'nomcli2',field: 'nomcli2'},
+                  {label: 'cxc',field: 'cxc'}
+                ],
+                rows:   res.data.registros   
+            }
+            this.setState({params: dat})
         } else {
             //posible message to send
             window.alert("El usuario no tiene permisos para acceder a esta operación")
@@ -25,82 +53,29 @@ export default class ListSales extends Component {
         }
     }
 
-    test = async () => {
-        console.log(this.state.list_sales);
+    filterSearch = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+        console.log(this.state.params);
     }
     //Allow show function
     async componentDidMount() {
-        this.getSales();
+        this.getSales();    
     }
+    
     render() {
         return (
             <div className="container">
                 <h1>VENTAS FENIX</h1>
                 <div className="table-responsive" >
-                    <table className= "table table-striped">
-                    <caption>Lista de Ventas</caption>
-                        <thead>
-                        
-                            <tr>
-                                <th scope="col">codclie</th>
-                                <th scope="col">cliente</th>
-                                <th scope="col">emision</th>
-                                <th scope="col">vence</th>
-                                <th scope="col">totalventas</th>
-
-                                <th scope="col">val</th>
-                                <th scope="col">porcentajetotal</th>
-                                <th scope="col">cantidadlog</th>
-                                <th scope="col">cienlog</th>
-                                <th scope="col">porcentajedv</th>
-
-                                <th scope="col">pndev</th>
-                                <th scope="col">dias</th>
-                                <th scope="col">diastot</th>
-                                <th scope="col">scoring</th>
-                                <th scope="col">email</th>
-
-                                <th scope="col">tlf1</th>
-                                <th scope="col">cod_acti</th>
-                                <th scope="col">nomcli2</th>
-                                <th scope="col">cxc</th>
-                       
-                            </tr>
-                        </thead>
-                        <tbody>
-                        
-                        {
-                                this.state.list_sales.map(sales =>
-                                    (<tr key={sales.codcli}>
-
-                                        <td>{sales.codcli} </td>
-                                        <td>{sales.cliente} </td>
-                                        <td>{sales.emision} </td>
-                                        <td>{sales.vence} </td>
-                                        <td>{sales.totalventas} </td>
-
-                                        <td>{sales.val} </td>
-                                        <td>{sales.porcentajetotal} </td>
-                                        <td>{sales.cantidadlog} </td>
-                                        <td>{sales.cienlog} </td>
-                                        <td>{sales.porcentajedv} </td>
-
-                                        <td>{sales.pndev} </td>
-                                        <td>{sales.dias} </td>
-                                        <td>{sales.diastot} </td>
-                                        <td>{sales.scoring} </td>
-                                        <td>{sales.email} </td>
-
-                                        <td>{sales.tlf1} </td>
-                                        <td>{sales.cod_acti} </td>
-                                        <td>{sales.nomcli2} </td>
-                                        <td>{sales.cxc}</td>
-                                        
-                                    
-                                    </tr>))
-                            }
-                        </tbody>
-                    </table>
+                    <MDBDataTable 
+                    hover 
+                    entriesOptions={[5, 10, 20, 25]} 
+                    entries={5}
+                    striped
+                    small 
+                    data={this.state.params}  />
                 </div>
             </div>
         )

@@ -13,7 +13,7 @@ function App() {
 
      <Router>
        <Navigation/>
-       <div className="container p-4" style = {{minHeight: "85vh"}}>
+       <div /*className="container p-4" style = {{minHeight: "85vh"}}*/>
       
 
     <Route path="/iniciar-sesion" component={FormLogin}/>

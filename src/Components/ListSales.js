@@ -66,7 +66,7 @@ export default class ListSales extends Component {
     
     render() {
         return (
-            <div className="container">
+            <div className="container p-4" style = {{minHeight: "85vh"}}>
                 <h1>VENTAS FENIX</h1>
                 <div className="table-responsive" >
                     <MDBDataTable 

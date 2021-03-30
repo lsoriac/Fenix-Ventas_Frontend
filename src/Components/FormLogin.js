@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default class FormLogin extends Component {
     state = {
@@ -12,12 +13,10 @@ export default class FormLogin extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        //console.log(e.target.value);
     }
 
     onSubmit = async e => {
         //do no reset when submmit form
-        //do not reload on React app (No optimal)
         e.preventDefault()
         const login = {
             usuario: this.state.user,
@@ -26,6 +25,7 @@ export default class FormLogin extends Component {
         let error = false
         let data = {}
         let res = {}
+        //query to backend
         try {
             res = await axios.post("http://localhost:4000/login", login)
         } catch (err) {
@@ -36,32 +36,40 @@ export default class FormLogin extends Component {
                 pass_user: ""
             })
         }
+        //no errors
         if (error === false) {
             data = {
                 token: res.data.token,
                 user: res.data.usuario
             }
-            localStorage.setItem('login', JSON.stringify(data))
+            //insert data on local Storage or session Storage
+            if(document.getElementById("session").checked){
+                localStorage.setItem('login', JSON.stringify(data))
+            }else{ 
+                sessionStorage.setItem('login', JSON.stringify(data))
+            }
+            //redirect to  sales page
             window.location.href = 'http://localhost:3000/ventas'
-        }else{
+        } else {
+            //show login error
             document.getElementById('err_log').style.display = 'Block'
             this.setState({
                 user: '',
                 pass_user: ''
             })
+            //set input values
             document.getElementById("user").value = ''
             document.getElementById("pass_user").value = ''
         }
-
     }
+
     async componentDidMount() {
         document.getElementById('err_log').style.display = 'None'
     }
 
     render() {
         return (
-            <div className="container p-4" style={{ height: "200px", width: "310px", marginTop:"150px" }}>
-                
+            <div className="container p-4" style={{ height: "200px", width: "310px", marginTop: "150px" }}>
                 <div className="card text-center" >
                     <div className="card-header">
                         <h4>Login</h4>
@@ -76,7 +84,7 @@ export default class FormLogin extends Component {
                                     </svg></div>
                                 </div>
                                 <input
-                                id="user"
+                                    id="user"
                                     name="user"
                                     type="text"
                                     className="form-control"
@@ -85,7 +93,6 @@ export default class FormLogin extends Component {
                                     placeholder="Usuario" />
                             </div>
 
-
                             <div className="input-group mb-2">
                                 <div className="input-group-prepend">
                                     <div className="input-group-text" ><svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor" className="bi bi-key-fill" viewBox="0 0 16 16">
@@ -93,7 +100,7 @@ export default class FormLogin extends Component {
                                     </svg></div>
                                 </div>
                                 <input
-                                id="pass_user"
+                                    id="pass_user"
                                     name="pass_user"
                                     type="password"
                                     value={this.state.pass_user}
@@ -101,22 +108,31 @@ export default class FormLogin extends Component {
                                     onChange={this.onChangeInput}
                                     placeholder="Contraseña" />
                             </div>
-                            <div  style={{fontSize:"11px"}} id="err_log" className="alert alert-danger alert-dismissible">
-                                <button type="button" className="close" data-dismiss="alert">&times;</button>
-                                <strong>Error! </strong><small>Usuario o Contraseña Incorrecto</small>
+                            {/*error*/}
+                            <div id="err_log" style={{ color: "red" }}>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                    <small>Usuario o contraseña incorrecto</small>
+                                </span>
                             </div>
-                            <div className="form-check" style={{marginTop: "50px", marginBottom:"25px"}}>
-                                <input className="form-check-input" type="checkbox" id="gridCheck" />
-                                <label className="form-check-label" for="gridCheck">
+                            {/*redirect*/}
+                            <span style={{ fontSize: "11px" }}>
+                                <label>No tiene cuenta</label>
+                                <Link to="/registro"> Cree una</Link>
+                            </span>
+                            {/*Decide local Storage or session Storage */}
+                            <div className="form-check" style={{ marginTop: "50px", marginBottom: "25px" }}>
+                                <input className="form-check-input" type="checkbox" id="session" />
+                                <label className="form-check-label" htmlFor="session">
                                     <span ><small > Mantener la sesión iniciada</small></span>
-
                                 </label>
                             </div>
                             <button type="submit" className="btn btn-primary btn-block">Ingresar</button>
                         </div>
                     </form>
                 </div>
-
             </div>
         )
     }

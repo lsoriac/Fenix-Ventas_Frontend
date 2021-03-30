@@ -25,8 +25,12 @@ export default class Navigation extends Component {
     }
 
     onClickClose = async (id) => {
-        if (localStorage.getItem('login')) {
-            localStorage.removeItem('login');   
+        if (localStorage.getItem('login') || sessionStorage.getItem('login')) {
+            if (localStorage.getItem('login')) {
+                localStorage.removeItem('login');   
+            }else{
+                sessionStorage.removeItem('login');   
+            }
         }else{
             //window.alert("El usuario no ha iniciado sesión");   
         }   

@@ -5,10 +5,13 @@ export default class Navigation extends Component {
 
     async componentDidMount(){
         let dat =null
-        //verify if login exists
+        //verify if login exists on localStorage
         if (localStorage.getItem('login')) {
             dat= JSON.parse(localStorage.getItem('login'))
-            //console.log(dat.user[0].nombre); 
+        }
+        //verify if login exists on session storage
+        if (sessionStorage.getItem('login')) {
+            dat= JSON.parse(sessionStorage.getItem('login'))
         }
         console.log(dat);
         if (dat === null) {

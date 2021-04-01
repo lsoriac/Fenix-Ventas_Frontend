@@ -7,15 +7,17 @@ import Navigation from './Components/Navigation'
 import FormLogin from './Components/FormLogin'
 import FormRegister from './Components/FormRegister'
 import ListSales from './Components/ListSales'
+import IndexPage from './Components/IndexPage'
 
 function App() {
   return (
 
      <Router>
        <Navigation/>
+      
        <div /*className="container p-4" style = {{minHeight: "85vh"}}*/>
       
-
+       <Route path="/" exact component={IndexPage}/>
     <Route path="/iniciar-sesion" component={FormLogin}/>
     <Route path="/registro" component={FormRegister}/>
     <Route path="/ventas" component={ListSales}/>

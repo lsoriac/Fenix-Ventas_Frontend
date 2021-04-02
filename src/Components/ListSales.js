@@ -85,8 +85,7 @@ export default class ListSales extends Component {
 
     render() {
         return (
-            <div className="container p-4" style={{ minHeight: "85vh" }} >
-                <h1>VENTAS FENIX</h1>
+            <div className="container p-4" style={{ minHeight: "85vh"}} >
                 <div className="table-responsive" >
                     <div style={{ textAlign: "right", color: "blue" }}>
                         <svg id="check" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
@@ -98,11 +97,12 @@ export default class ListSales extends Component {
                         <DataTableExtensions print={false} export={false} filterPlaceholder={"Buscar"}{...this.state.params} >
 
                             <DataTable
-
-                                title={"Ventas"}
+                                subHeader 
+                                subHeaderAlign={"center"}
+                                subHeaderComponent={[<h4 key = "tit">Ventas</h4>]}
                                 striped
                                 fixedHeader
-                                fixedHeaderScrollHeight={"450px"}
+                                fixedHeaderScrollHeight={"380px"}
 
                                 pagination
 

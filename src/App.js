@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'; // Archivo Javascript de Bootstrap 4 
 
@@ -12,18 +12,16 @@ import IndexPage from './Components/IndexPage'
 function App() {
   return (
 
-     <Router>
-       <Navigation/>
-      
-       <div /*className="container p-4" style = {{minHeight: "85vh"}}*/>
-      
-       <Route path="/" exact component={IndexPage}/>
-    <Route path="/iniciar-sesion" component={FormLogin}/>
-    <Route path="/registro" component={FormRegister}/>
-    <Route path="/ventas" component={ListSales}/>
-    </div>
-     </Router>
-    
+    <Router>
+      <Navigation />
+      <Route path="/ventas" component={ListSales} />
+        <div>
+          <Route path="/" exact component={IndexPage} />
+          <Route path="/iniciar-sesion" component={FormLogin} />
+          <Route path="/registro" component={FormRegister} />
+      </div>
+    </Router>
+
   );
 }
 

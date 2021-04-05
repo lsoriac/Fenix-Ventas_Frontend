@@ -20,12 +20,12 @@ export default class FormRegister extends Component {
 
         //Error control change
         if (e.target.name === "name_user") {
-             //message err
+            //message err
             document.getElementById('name_user').style.borderColor = 'Green'
             document.getElementById('name_user_err').style.display = 'None'
         }
         if (e.target.name === "user") {
-             //message err
+            //message err
             document.getElementById('user').style.borderColor = 'Green'
             document.getElementById('user_err').style.display = 'None'
         }
@@ -64,8 +64,8 @@ export default class FormRegister extends Component {
         if (document.getElementById("pass_user").value === document.getElementById("pass_user_confirm").value) {
             document.getElementById('pass_user_confirm_err').style.display = 'None'
         } else {
-            this.setState({err_pass_user_confirm: 'Este campo debe ser igual a la contraseña ingresada'})
-             document.getElementById('pass_user_confirm').style.borderColor = 'Red'
+            this.setState({ err_pass_user_confirm: 'Este campo debe ser igual a la contraseña ingresada' })
+            document.getElementById('pass_user_confirm').style.borderColor = 'Red'
             document.getElementById('pass_user_confirm_err').style.display = 'Block'
         }
     }
@@ -162,16 +162,16 @@ export default class FormRegister extends Component {
 
     render() {
         return (
-            <div className="container p-4" style={{ height: "200px", width: "322px",  marginTop: "150px" }}>
+            <div className="container p-4" style={{ height: "200px", width: "322px", marginTop: "150px", marginBottom: "370px" }}>
                 <div className="card text-center" >
-                    <div className="card-header" style={{backgroundColor: "rgb(0,0,0)", color: "rgb(255,255,255)"}}>
+                    <div className="card-header">
                         <h4>Formulario Registro</h4>
                     </div>
                     <form onSubmit={this.onSubmit} >
                         <div className="card-body" >
-                            <div className="input-group mb-2"  style={{marginTop:"30px"}} >
+                            <div className="input-group mb-2" style={{ marginTop: "30px" }} >
                                 <div className="input-group-prepend">
-                                    <div className="input-group-text" style={{backgroundColor: "rgb(0,0,0)"}}><svg xmlns="http://www.w3.org/2000/svg" width="24" fill = "rgb(255,255,255)" className="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <div className="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" fill="rgb(0,0,0)" className="bi bi-person-circle" viewBox="0 0 16 16">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                                         <path fillrulee="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                     </svg></div>
@@ -196,7 +196,7 @@ export default class FormRegister extends Component {
 
                             <div className="input-group mb-2" >
                                 <div className="input-group-prepend">
-                                    <div className="input-group-text" style={{backgroundColor: "rgb(0,0,0)"}}> <svg xmlns="http://www.w3.org/2000/svg" width="24" fill = "rgb(255,255,255)" className="bi bi-person-check-fill" viewBox="0 0 16 16">
+                                    <div className="input-group-text"> <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="rgb(0,0,0)" className="bi bi-person-check-fill" viewBox="0 0 16 16">
                                         <path fillrulee="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                                         <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                     </svg></div>
@@ -221,7 +221,7 @@ export default class FormRegister extends Component {
 
                             <div className="input-group mb-2 " >
                                 <div className="input-group-prepend" >
-                                    <div className="input-group-text" style={{backgroundColor: "rgb(0,0,0)"}}><svg xmlns="http://www.w3.org/2000/svg" width="24" fill = "rgb(255,255,255)" className="bi bi-key" viewBox="0 0 16 16">
+                                    <div className="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" fill="rgb(0,0,0)" className="bi bi-key" viewBox="0 0 16 16">
                                         <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
                                         <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                                     </svg></div>
@@ -238,7 +238,7 @@ export default class FormRegister extends Component {
                             {/*error 3*/}
                             <div id="pass_user_err" style={{ color: "red" }}>
                                 <span>
-                                    <svg  id="noCheck"  xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+                                    <svg id="noCheck" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                                         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                                     </svg>
                                     <svg id="check" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
@@ -250,11 +250,11 @@ export default class FormRegister extends Component {
 
                             <div className="input-group mb-2" >
                                 <div className="input-group-prepend">
-                                    <div className="input-group-text" style={{backgroundColor: "rgb(0,0,0)"}}> <svg xmlns="http://www.w3.org/2000/svg" width="24" fill = "rgb(255,255,255)" className="bi bi-key-fill" viewBox="0 0 16 16">
+                                    <div className="input-group-text"> <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="rgb(0,0,0)" className="bi bi-key-fill" viewBox="0 0 16 16">
                                         <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                                     </svg></div>
                                 </div>
-                                <input 
+                                <input
                                     id="pass_user_confirm"
                                     name="pass_user_confirm"
                                     type="password"
@@ -273,7 +273,7 @@ export default class FormRegister extends Component {
                                     <small>{this.state.err_pass_user_confirm}</small>
                                 </span>
                             </div>
-                            <button style={{marginTop:"30px"}} type="submit" className="btn btn-primary btn-block">Registrarse</button>
+                            <button style={{ marginTop: "30px" }} type="submit" className="btn btn-primary btn-block">Continuar</button>
                         </div>
                     </form>
                 </div>

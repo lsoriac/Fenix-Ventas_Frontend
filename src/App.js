@@ -8,6 +8,7 @@ import FormLogin from './Components/FormLogin'
 import FormRegister from './Components/FormRegister'
 import ListSales from './Components/ListSales'
 import IndexPage from './Components/IndexPage'
+import Footer from './Components/Footer'
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <Route path="/iniciar-sesion" component={FormLogin} />
           <Route path="/registro" component={FormRegister} />
       </div>
+      <Footer/>
     </Router>
+
 
   );
 }

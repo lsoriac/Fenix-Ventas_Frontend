@@ -43,9 +43,9 @@ export default class FormLogin extends Component {
                 user: res.data.usuario
             }
             //insert data on local Storage or session Storage
-            if(document.getElementById("session").checked){
+            if (document.getElementById("session").checked) {
                 localStorage.setItem('login', JSON.stringify(data))
-            }else{ 
+            } else {
                 sessionStorage.setItem('login', JSON.stringify(data))
             }
             //redirect to  sales page
@@ -69,14 +69,14 @@ export default class FormLogin extends Component {
 
     render() {
         return (
-            <div className="container p-4" style={{ height: "200px", width: "322px", marginTop: "150px" }}>
-                <div className="card text-center" >
+            <div className="container p-4" style={{ height: "200px", width: "322px", marginTop: "150px", marginBottom: "370px" }}>
+                <div className="card text-center">
                     <div className="card-header">
                         <h4>Login</h4>
                     </div>
                     <form onSubmit={this.onSubmit}>
                         <div className="card-body">
-                            <div className="input-group mb-2" style={{marginTop:"30px"}}>
+                            <div className="input-group mb-2" style={{ marginTop: "30px" }}>
                                 <div className="input-group-prepend">
                                     <div className="input-group-text" ><svg xmlns="http://www.w3.org/2000/svg" width="24" fillRule="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -95,7 +95,7 @@ export default class FormLogin extends Component {
 
                             <div className="input-group mb-2">
                                 <div className="input-group-prepend">
-                                    <div className="input-group-text" ><svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor" className="bi bi-key-fill" viewBox="0 0 16 16">
+                                    <div className="input-group-text" ><svg xmlns="http://www.w3.org/2000/svg" width="24" fill="rgb(0,0,0)" className="bi bi-key-fill" viewBox="0 0 16 16">
                                         <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                                     </svg></div>
                                 </div>

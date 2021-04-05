@@ -85,9 +85,9 @@ export default class ListSales extends Component {
 
     render() {
         return (
-            <div className="container p-4" style={{ minHeight: "85vh"}} >
+            <div className="container p-4" style={{ minHeight: "85vh" }} >
                 <div className="table-responsive" >
-                    <div style={{ textAlign: "right", color: "blue" }}>
+                    <div style={{ textAlign: "right", color: "	rgb(31, 56, 175 )" }}>
                         <svg id="check" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
                             <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                         </svg>
@@ -95,11 +95,10 @@ export default class ListSales extends Component {
                     </div>
                     <div onClick={() => this.changeOptions(this.state.cont)}>
                         <DataTableExtensions print={false} export={false} filterPlaceholder={"Buscar"}{...this.state.params} >
-
                             <DataTable
-                                subHeader 
+                                subHeader
                                 subHeaderAlign={"center"}
-                                subHeaderComponent={[<h4 key = "tit">Ventas</h4>]}
+                                subHeaderComponent={[<h4 key="tit" style={{ color: "rgb(31, 56, 175 )" }}>Reporte Ventas</h4>]}
                                 striped
                                 fixedHeader
                                 fixedHeaderScrollHeight={"380px"}
@@ -110,16 +109,9 @@ export default class ListSales extends Component {
                                 paginationRowsPerPageOptions={[5, 10, 20, 30]}
                                 paginationComponentOptions={this.state.optionsPagination}
                             />
-
                         </DataTableExtensions>
-
-
-
                     </div>
-
                 </div>
-
-
             </div>
         )
     }

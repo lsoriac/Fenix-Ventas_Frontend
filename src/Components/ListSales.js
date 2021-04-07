@@ -5,7 +5,7 @@ import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
 
 export default class ListSales extends Component {
-
+    BACKEND_URL = "https://fenix-ventas-backend.herokuapp.com"
     state = {
         cont: 0,
         list_sales: [],
@@ -30,7 +30,7 @@ export default class ListSales extends Component {
             //set user
             this.setState({ user_session: "Bienvenido " + (data.user[0].nombre) })
             //query to backend -  need token verify
-            const res = await axios.get('http://localhost:4000/ventas', { headers })
+            const res = await axios.get(this.BACKEND_URL+'/ventas', { headers })
             this.setState({ list_sales: res.data.registros })
             //style datatable
             const dat = {

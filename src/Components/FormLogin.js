@@ -50,7 +50,7 @@ export default class FormLogin extends Component {
                 sessionStorage.setItem('login', JSON.stringify(data))
             }
             //redirect to  sales page
-            window.location.href = 'http://localhost:3000/ventas'
+            window.location.href = '/ventas'
         } else {
             //show login error
             document.getElementById('err_log').style.display = 'Block'

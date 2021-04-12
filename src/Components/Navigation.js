@@ -51,21 +51,21 @@ export default class Navigation extends Component {
                         <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z" />
                     </svg>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
+                <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
-                        <li className="nav-item" id="register" style={{hover: "white"}}>
+                        <li style={{ marginLeft: "20px" }} className="nav-item" id="register">
                             <Link className="navbar-brand" to="/registro">Registrarse
                         </Link>
                         </li>
-                        <li className="nav-item" id="login">
+                        <li style={{ marginLeft: "20px" }} className="nav-item" id="login">
                             <Link className="navbar-brand" to="/iniciar-sesion">Iniciar Sesión
                         </Link>
                         </li>
-                        <li className="nav-item" id="sales">
+                        <li style={{ marginLeft: "20px" }} className="nav-item" id="sales">
                             <Link className="navbar-brand" to="/ventas">Reporte Ventas
                         </Link>
                         </li>
-                        <li className="nav-item" id="close" onClick={() => this.onClickClose()}>
+                        <li style={{ marginLeft: "20px" }} className="nav-item" id="close" onClick={() => this.onClickClose()}>
                             <Link className="navbar-brand" to="/">Cerrar Sesión
                         </Link>
                         </li>

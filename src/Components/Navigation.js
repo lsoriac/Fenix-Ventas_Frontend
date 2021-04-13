@@ -8,12 +8,15 @@ export default class Navigation extends Component {
         //verify if login exists on localStorage
         if (localStorage.getItem('login')) {
             dat = JSON.parse(localStorage.getItem('login'))
+            let n =  new Date();
+            if (n.getDate() + "/" + (n.getMonth() + 1) + "/" + n.getFullYear()===dat['date_expired']) {
+                this.onClickClose()
+            }
         }
         //verify if login exists on session storage
         if (sessionStorage.getItem('login')) {
             dat = JSON.parse(sessionStorage.getItem('login'))
         }
-        console.log(dat);
         if (dat === null) {
             document.getElementById('register').style.display = 'Block'
             document.getElementById('login').style.display = 'Block'
@@ -27,7 +30,7 @@ export default class Navigation extends Component {
         }
     }
 
-    onClickClose = async (id) => {
+    onClickClose = async () => {
         if (localStorage.getItem('login') || sessionStorage.getItem('login')) {
             if (localStorage.getItem('login')) {
                 localStorage.removeItem('login');

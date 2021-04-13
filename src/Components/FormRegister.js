@@ -3,6 +3,7 @@ import axios from 'axios'
 
 export default class FormRegister extends Component {
     BACKEND_URL = "https://fenix-ventas-backend.herokuapp.com"
+    //BACKEND_URL = "http://localhost:4000"
     state = {
         name_user: '',
         user: '',

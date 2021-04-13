@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default class FormLogin extends Component {
     BACKEND_URL = "https://fenix-ventas-backend.herokuapp.com"
+    //BACKEND_URL = "http://localhost:4000"
     state = {
         user: '',
         pass_user: ''
@@ -39,9 +40,20 @@ export default class FormLogin extends Component {
         }
         //no errors
         if (error === false) {
+            let n =  new Date();
+            //Año
+            let y = n.getFullYear();
+            //Mes
+            let m = n.getMonth() + 1;
+            //Día
+            let d = n.getDate();
+            //time to expire session
+            n.setDate(n.getDate() + 1);
             data = {
                 token: res.data.token,
-                user: res.data.usuario
+                user: res.data.usuario,
+                date: d + "/" + m + "/" + y,
+                date_expired: n.getDate() + "/" + (n.getMonth() + 1) + "/" + n.getFullYear()
             }
             //insert data on local Storage or session Storage
             if (document.getElementById("session").checked) {

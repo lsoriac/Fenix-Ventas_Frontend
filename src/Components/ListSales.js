@@ -6,6 +6,7 @@ import 'react-data-table-component-extensions/dist/index.css';
 
 export default class ListSales extends Component {
     BACKEND_URL = "https://fenix-ventas-backend.herokuapp.com"
+    //BACKEND_URL = "http://localhost:4000"
     state = {
         cont: 0,
         list_sales: [],

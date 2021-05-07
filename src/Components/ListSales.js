@@ -36,28 +36,28 @@ export default class ListSales extends Component {
             //style datatable
             const dat = {
                 columns: [
-                    { name: 'codcli', selector: 'codcli', sortable: true, grow: "6" },
-                    { name: 'cliente', selector: 'cliente', sortable: true, grow: "6", minWidth: '300px', wrap: true },
-                    { name: 'emision', selector: 'emision', sortable: true },
-                    { name: 'vence', selector: 'vence', sortable: true },
-                    { name: 'totalventas', selector: 'totalventas', sortable: true, grow: "6" },
+                    { name: 'Código', selector: 'codcli', sortable: true, width: "80px", compact:true },
+                    { name: 'Cliente', selector: 'cliente', sortable: true, width: "300px", compact:true, wrap:true, center:false},
+                    { name: 'Emisión', selector: 'emision', sortable: true,  width: "80px", compact:true},
+                    { name: 'Vence', selector: 'vence', sortable: true,  width: "80px", compact:true},
+                    { name: 'Tot.Ventas', selector: 'totalventas', sortable: true, right:true, width: "80px", compact:true},
 
-                    { name: 'val', selector: 'val', sortable: true, grow: "6" },
-                    { name: 'porcentajetotal', selector: 'porcentajetotal', sortable: true, grow: "6" },
-                    { name: 'cantidadlog', selector: 'cantidadlog', sortable: true, grow: "6" },
-                    { name: 'cienlog', selector: 'cienlog', sortable: true, grow: "6" },
-                    { name: 'porcentajedv', selector: 'porcentajedv', sortable: true, grow: "6" },
+                    { name: 'Val', selector: 'val', sortable: true, right:true,  width: "80px", compact:true},
+                    { name: '% Total', selector: 'porcentajetotal', sortable: true, right:true,  width: "80px", compact:true},
+                    { name: 'Cant. log', selector: 'cantidadlog', sortable: true, right:true,  width: "80px", compact:true},
+                    { name: 'Cienlog', selector: 'cienlog', sortable: true, right:true,  width: "80px", compact:true},
+                    { name: '% Dv', selector: 'porcentajedv', sortable: true, right:true,  width: "80px", compact:true },
 
-                    { name: 'pndev', selector: 'pndev', sortable: true, grow: "6" },
-                    { name: 'dias', selector: 'dias' },
-                    { name: 'diastot', selector: 'diastot', sortable: true },
-                    { name: 'scoring', selector: 'scoring', sortable: true, grow: "6" },
-                    { name: 'email', selector: 'email', sortable: true, grow: "6", minWidth: '400px', wrap: true },
+                    { name: 'Pndev', selector: 'pndev', sortable: true, right:true,  width: "80px", compact:true },
+                    { name: 'Días', selector: 'dias', right:true,  width: "80px", compact:true },
+                    { name: 'Días Tot.', selector: 'diastot', sortable: true, right:true,  width: "80px", compact:true },
+                    { name: 'Scoring', selector: 'scoring', sortable: true, right:true,  width: "80px", compact:true },
+                    { name: 'Email', selector: 'email', sortable: true },
 
-                    { name: 'tlf1', selector: 'tlf1', sortable: true, grow: "6", wrap: true },
-                    { name: 'cod_acti', selector: 'cod_acti', sortable: true, wrap: true, minWidth: '150px' },
-                    { name: 'nomcli2', selector: 'nomcli2', sortable: true, grow: "6", minWidth: '300px', wrap: true },
-                    { name: 'cxc', selector: 'cxc', sortable: true, grow: "6" }
+                    { name: 'Télf.', selector: 'tlf1', sortable: true,  wrap: true, width: "80px", compact:true  },
+                    { name: 'Cod. Acti', selector: 'cod_acti', sortable: true,  width: "90px", compact:true },
+                    { name: 'Nom. Cli2', selector: 'nomcli2', sortable: true },
+                    { name: 'Cxc', selector: 'cxc', sortable: true, width: "80px", compact:true  }
                 ],
                 data: res.data.registros
             }
@@ -86,7 +86,7 @@ export default class ListSales extends Component {
 
     render() {
         return (
-            <div className="container p-4" style={{ minHeight: "85vh" }} >
+            <div className="container-fluid" style={{ minHeight: "85vh" }} >
                 <div className="table-responsive" >
                     <div style={{ textAlign: "right", color: "	rgb(31, 56, 175 )" }}>
                         <svg id="check" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
@@ -102,8 +102,8 @@ export default class ListSales extends Component {
                                 subHeaderComponent={[<h4 key="tit" style={{ color: "rgb(31, 56, 175 )" }}>Reporte Ventas</h4>]}
                                 striped
                                 fixedHeader
-                                fixedHeaderScrollHeight={"380px"}
-
+                                fixedHeaderScrollHeight={"1500px"}
+                                
                                 pagination
 
                                 paginationPerPage={5}

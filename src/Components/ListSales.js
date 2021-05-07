@@ -37,7 +37,7 @@ export default class ListSales extends Component {
             const dat = {
                 columns: [
                     { name: 'Código', selector: 'codcli', sortable: true, width: "80px", compact:true },
-                    { name: 'Cliente', selector: 'cliente', sortable: true, width: "300px", compact:true, wrap:true, center:false},
+                    { name: 'Cliente', selector: 'cliente', sortable: true, width: "300px", compact:true, wrap:true},
                     { name: 'Emisión', selector: 'emision', sortable: true,  width: "80px", compact:true},
                     { name: 'Vence', selector: 'vence', sortable: true,  width: "80px", compact:true},
                     { name: 'Tot.Ventas', selector: 'totalventas', sortable: true, right:true, width: "80px", compact:true},
@@ -52,12 +52,12 @@ export default class ListSales extends Component {
                     { name: 'Días', selector: 'dias', right:true,  width: "80px", compact:true },
                     { name: 'Días Tot.', selector: 'diastot', sortable: true, right:true,  width: "80px", compact:true },
                     { name: 'Scoring', selector: 'scoring', sortable: true, right:true,  width: "80px", compact:true },
-                    { name: 'Email', selector: 'email', sortable: true },
+                    { name: 'Email', selector: 'email', sortable: true,  width: "100px" },
 
                     { name: 'Télf.', selector: 'tlf1', sortable: true,  wrap: true, width: "80px", compact:true  },
                     { name: 'Cod. Acti', selector: 'cod_acti', sortable: true,  width: "90px", compact:true },
-                    { name: 'Nom. Cli2', selector: 'nomcli2', sortable: true },
-                    { name: 'Cxc', selector: 'cxc', sortable: true, width: "80px", compact:true  }
+                    { name: 'Nom. Cli2', selector: 'nomcli2', sortable: true,  width: "100px", compact:true, wrap:true },
+                    { name: 'Cxc', selector: 'cxc', sortable: true, width: "90px",  right:true,   }
                 ],
                 data: res.data.registros
             }
@@ -86,7 +86,7 @@ export default class ListSales extends Component {
 
     render() {
         return (
-            <div className="container-fluid" style={{ minHeight: "85vh" }} >
+            <div className="container-fluid" style={{ minHeight: "85vh", width:"95%"}} >
                 <div className="table-responsive" >
                     <div style={{ textAlign: "right", color: "	rgb(31, 56, 175 )" }}>
                         <svg id="check" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">

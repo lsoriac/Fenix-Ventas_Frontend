@@ -18,14 +18,14 @@ div.app {
     background-color: rgb(150, 120, 0);
 }
 
-a {
+a.navbar-brand {
     display: block;
     color: white;
     text-decoration: none;
     position: relative;
 }
 
-a::after {
+a.navbar-brand::after {
     content: "";
     background: white;
     mix-blend-mode: exclusion;
@@ -37,6 +37,6 @@ a::after {
     transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-a:hover::after {
+a.navbar-brand:hover::after {
     height: calc(100% + 8px)
 }

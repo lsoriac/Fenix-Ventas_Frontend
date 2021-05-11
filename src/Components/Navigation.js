@@ -19,12 +19,12 @@ export default class Navigation extends Component {
         }
         if (dat === null) {
             document.getElementById('register').style.display = 'Block'
-            document.getElementById('login').style.display = 'Block'
+            document.getElementById('login-s').style.display = 'Block'
             document.getElementById('sales').style.display = 'None'
             document.getElementById('close').style.display = 'None'
         } else {
             document.getElementById('register').style.display = 'None'
-            document.getElementById('login').style.display = 'None'
+            document.getElementById('login-s').style.display = 'None'
             document.getElementById('sales').style.display = 'Block'
             document.getElementById('close').style.display = 'Block'
         }
@@ -60,7 +60,7 @@ export default class Navigation extends Component {
                             <Link className="navbar-brand" to="/registro">Registrarse
                         </Link>
                         </li>
-                        <li style={{ marginLeft: "20px" }} className="nav-item" id="login">
+                        <li style={{ marginLeft: "20px" }} className="nav-item" id="login-s">
                             <Link className="navbar-brand" to="/iniciar-sesion">Iniciar Sesión
                         </Link>
                         </li>

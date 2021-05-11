@@ -19,7 +19,7 @@ export default class FormLogin extends Component {
 
     onSubmit = async e => {
         //do no reset when submmit form
-        e.preventDefault()
+        e.preventDefault() 
         const login = {
             usuario: this.state.user,
             contrasena: this.state.pass_user
@@ -29,7 +29,7 @@ export default class FormLogin extends Component {
         let res = {}
         //query to backend
         try {
-            res = await axios.post(this.BACKEND_URL+"/login", login)
+            res = await axios.post(this.BACKEND_URL + "/login", login)
         } catch (err) {
             error = true
             //console.log(err.response);
@@ -40,7 +40,7 @@ export default class FormLogin extends Component {
         }
         //no errors
         if (error === false) {
-            let n =  new Date();
+            let n = new Date();
             //Año
             let y = n.getFullYear();
             //Mes
@@ -121,6 +121,7 @@ export default class FormLogin extends Component {
                                     onChange={this.onChangeInput}
                                     placeholder="Contraseña" />
                             </div>
+                      
                             {/*error*/}
                             <div id="err_log" style={{ color: "red" }}>
                                 <span>
@@ -131,12 +132,17 @@ export default class FormLogin extends Component {
                                 </span>
                             </div>
                             {/*redirect*/}
-                            <span style={{ fontSize: "11px" }}>
-                                <label>No tiene cuenta</label>
+                            <div style={{ fontSize: "11px", marginBottom: "20px" }}>
+
+                                <Link to="/recuperar">¿Olvidó su contraseña?</Link>
+                            </div>
+
+                            <div style={{ fontSize: "11px" }}>
+                                <label>No tiene cuenta.</label>
                                 <Link to="/registro"> Cree una</Link>
-                            </span>
+                            </div>
                             {/*Decide local Storage or session Storage */}
-                            <div className="form-check" style={{ marginTop: "36px", marginBottom: "25px" }}>
+                            <div className="form-check" style={{ marginTop: "30px", marginBottom: "25px" }}>
                                 <input className="form-check-input" type="checkbox" id="session" />
                                 <label className="form-check-label" htmlFor="session">
                                     <span ><small > Mantener la sesión iniciada</small></span>

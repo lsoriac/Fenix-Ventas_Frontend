@@ -40,3 +40,9 @@ a.navbar-brand::after {
 a.navbar-brand:hover::after {
     height: calc(100% + 8px)
 }
+
+.popup-content {
+    font-size: 9px;
+    height: 55px;
+    min-width: 320px;
+}

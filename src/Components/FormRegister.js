@@ -9,6 +9,7 @@ export default class FormRegister extends Component {
         user: '',
         pass_user: '',
         pass_user_confirm: '',
+        email: '',
         err_pass: 'Debe completar este campo',
         err_pass_user_confirm: 'Debe completar este campo'
 
@@ -30,6 +31,11 @@ export default class FormRegister extends Component {
             //message err
             document.getElementById('user').style.borderColor = 'Green'
             document.getElementById('user_err').style.display = 'None'
+        }
+        if (e.target.name === "email") {
+            //message err
+            document.getElementById('email').style.borderColor = 'Green'
+            document.getElementById('email_err').style.display = 'None'
         }
         if (e.target.name === "pass_user") {
             document.getElementById('pass_user').style.borderColor = 'Green'
@@ -117,6 +123,7 @@ export default class FormRegister extends Component {
         //hidden errors
         document.getElementById('name_user_err').style.display = 'None'
         document.getElementById('user_err').style.display = 'None'
+        document.getElementById('email_err').style.display = "None"
         document.getElementById('pass_user_err').style.display = 'None'
         document.getElementById('pass_user_confirm_err').style.display = 'None'
         document.getElementById('check').style.display = "None"
@@ -130,7 +137,8 @@ export default class FormRegister extends Component {
                 let newUser = {
                     nombre: this.state.name_user,
                     contrasena: this.state.pass_user,
-                    usuario: this.state.user
+                    usuario: this.state.user,
+                    email: this.state.email
                 }
                 //Query to backend - create new user
                 const res = await axios.post(this.BACKEND_URL+ "/register", newUser)
@@ -150,6 +158,10 @@ export default class FormRegister extends Component {
             if (this.state.user === "") {
                 document.getElementById('user_err').style.display = 'Block'
                 document.getElementById('user').style.borderColor = 'Red'
+            }
+            if (this.state.email === "") {
+                document.getElementById('email_err').style.display = 'Block'
+                document.getElementById('email').style.borderColor = 'Red'
             }
             if (this.state.pass_user === "") {
                 document.getElementById('pass_user_err').style.display = 'Block'
@@ -221,6 +233,31 @@ export default class FormRegister extends Component {
                                 </span>
                             </div>
 
+
+                            <div className="input-group mb-2" >
+                                <div className="input-group-prepend">
+                                <div className="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgb(0,0,0)" className="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                                    </svg></div>
+                                </div>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    className="form-control"
+                                    onChange={this.onChangeInput}
+                                    placeholder="Correo electrónico" />
+                            </div>
+                            {/*error 3*/}
+                            <div id="email_err" style={{ color: "red" }}>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                    <small>Debe completar este campo</small>
+                                </span>
+                            </div>
+
                             <div className="input-group mb-2 " >
                                 <div className="input-group-prepend" >
                                     <div className="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" fill="rgb(0,0,0)" className="bi bi-key" viewBox="0 0 16 16">
@@ -237,7 +274,7 @@ export default class FormRegister extends Component {
                                     placeholder="Contraseña"
                                 />
                             </div>
-                            {/*error 3*/}
+                            {/*error 4*/}
                             <div id="pass_user_err" style={{ color: "red" }}>
                                 <span>
                                     <svg id="noCheck" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
@@ -266,7 +303,7 @@ export default class FormRegister extends Component {
                                 />
 
                             </div>
-                            {/*error 4*/}
+                            {/*error 5*/}
                             <div id="pass_user_confirm_err" style={{ color: "red" }}>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">

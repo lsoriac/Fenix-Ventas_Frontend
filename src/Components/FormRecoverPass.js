@@ -22,7 +22,7 @@ export default class FormRecoverPass extends Component {
             email: this.state.email,
         }
         try {
-            const res = await axios.post('http://localhost:4000/recover', emailSend)
+            const res = await axios.post('https://fenix-ventas-backend.herokuapp.com/recover', emailSend)
             if (res.data.status) {
                 document.getElementById('h').style.display = 'None'
                 this.setState({ desc: "Información de Seguridad Actualizada.", content: "Su nueva contraseña fue enviada al correo." })

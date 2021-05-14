@@ -18,12 +18,12 @@ export default class Navigation extends Component {
             dat = JSON.parse(sessionStorage.getItem('login'))
         }
         if (dat === null) {
-            document.getElementById('register').style.display = 'Block'
+           // document.getElementById('register').style.display = 'Block'
             document.getElementById('login-s').style.display = 'Block'
             document.getElementById('sales').style.display = 'None'
             document.getElementById('close').style.display = 'None'
         } else {
-            document.getElementById('register').style.display = 'None'
+            //document.getElementById('register').style.display = 'None'
             document.getElementById('login-s').style.display = 'None'
             document.getElementById('sales').style.display = 'Block'
             document.getElementById('close').style.display = 'Block'
@@ -45,7 +45,7 @@ export default class Navigation extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgb(0,0,0)" }}>
+            <nav id= "navigation" className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgb(25,118,210)" }}>
                 <Link className="navbar-brand" to="/"><img src="https://fenixcorp.net/wp-content/uploads/2019/08/logoblanco-150x63.png" alt="Logo - Fenix - Corp" />
                 </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,10 +56,10 @@ export default class Navigation extends Component {
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
-                        <li style={{ marginLeft: "20px" }} className="nav-item" id="register">
+                        {/*<li style={{ marginLeft: "20px" }} className="nav-item" id="register">
                             <Link className="navbar-brand" to="/registro">Registrarse
                         </Link>
-                        </li>
+        </li>*/}
                         <li style={{ marginLeft: "20px" }} className="nav-item" id="login-s">
                             <Link className="navbar-brand" to="/iniciar-sesion">Iniciar Sesión
                         </Link>

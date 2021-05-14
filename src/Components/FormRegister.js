@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default class FormRegister extends Component {
     BACKEND_URL = "https://fenix-ventas-backend.herokuapp.com"
@@ -11,8 +12,8 @@ export default class FormRegister extends Component {
         pass_user_confirm: '',
         email: '',
         err_pass: 'Debe completar este campo',
-        err_pass_user_confirm: 'Debe completar este campo'
-
+        err_pass_user_confirm: 'Debe completar este campo',
+        width_r: ''
     }
 
     //event chance typing
@@ -127,6 +128,8 @@ export default class FormRegister extends Component {
         document.getElementById('pass_user_err').style.display = 'None'
         document.getElementById('pass_user_confirm_err').style.display = 'None'
         document.getElementById('check').style.display = "None"
+
+        this.setState({width_r: (document.getElementById("b").clientHeight*0.6.toString()+"px") })
     }
 
     onSubmit = async e => {
@@ -140,7 +143,7 @@ export default class FormRegister extends Component {
                     usuario: this.state.user,
                     email: this.state.email
                 }
-                //Query to backend - create new user
+                //Request to backend - create new user
                 const res = await axios.post(this.BACKEND_URL+ "/register", newUser)
                 console.log(res);
                 window.location.href = '/'
@@ -176,10 +179,11 @@ export default class FormRegister extends Component {
 
     render() {
         return (
-            <div className="container p-4" style={{ height: "200px", width: "322px", marginTop: "150px", marginBottom: "370px" }}>
+            <div id = "b" className="container-fluid" style={{ minHeight: "85vh", width: this.state.width_r  }} >
+ <div className="container p-4" style={{ width: "100%", marginTop: "100px" }}>
                 <div className="card text-center" >
                     <div className="card-header">
-                        <h4>Formulario Registro</h4>
+                        <h4>Registro</h4>
                     </div>
                     <form onSubmit={this.onSubmit} >
                         <div className="card-body" >
@@ -312,12 +316,16 @@ export default class FormRegister extends Component {
                                     <small>{this.state.err_pass_user_confirm}</small>
                                 </span>
                             </div>
+                            <span style={{ fontSize: "11px" }}>
+                            <label>¿Ya tiene cuenta?</label>
+                            <Link to="/iniciar-sesion"> Iniciar Sesión.</Link>
+                        </span>
                             <button style={{ marginTop: "30px" }} type="submit" className="btn btn-primary btn-block">Continuar</button>
                         </div>
                     </form>
                 </div>
             </div>
-
+            </div>
         )
     }
 }

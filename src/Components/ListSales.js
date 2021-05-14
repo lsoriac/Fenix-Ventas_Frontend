@@ -54,15 +54,19 @@ export default class ListSales extends Component {
                     { name: 'Días', selector: 'dias', right: true, width: "80px", compact: true },
                     { name: 'Días Tot.', selector: 'diastot', sortable: true, right: true, width: "80px", compact: true },
                     { name: 'Scoring', selector: 'scoring', sortable: true, right: true, width: "80px", compact: true },
-                    { name: 'Email', selector: 'email', sortable: true, width: "100px", cell: row => <Popup style={{ backgroundColor: "rgb(0,123,255)"  }} trigger={<button style={{ fontSize:"11px", color: "white", borderColor: "rgb(0,123,255)", backgroundColor: "rgb(0,123,255)" }}> Ver más..</button>} position="top center">
-                    <div>{row.email}</div>
-                </Popup> },
+                    {
+                        name: 'Email', selector: 'email', sortable: true, width: "100px", cell: row => <Popup style={{ backgroundColor: "rgb(0,123,255)" }} trigger={<button style={{ fontSize: "11px", color: "white", borderColor: "rgb(0,123,255)", backgroundColor: "rgb(0,123,255)" }}> Ver más..</button>} position="top center">
+                            <div>{row.email}</div>
+                        </Popup>
+                    },
 
                     { name: 'Télf.', selector: 'tlf1', sortable: true, wrap: true, width: "98px", compact: true },
                     { name: 'Cod. Acti', selector: 'cod_acti', sortable: true, width: "90px", compact: true },
-                    { name: 'Nom. Cli2', selector: 'nomcli2', sortable: true, width: "100px", compact: true , cell: row => <Popup style={{ backgroundColor: "rgb(0,123,255)"  }} trigger={<button style={{ fontSize:"11px", color: "white", borderColor: "rgb(0,123,255)", backgroundColor: "rgb(0,123,255)" }}> Ver más..</button>} position="top center">
-                    <div>{row.nomcli2}</div>
-                </Popup >},
+                    {
+                        name: 'Nom. Cli2', selector: 'nomcli2', sortable: true, width: "100px", compact: true, cell: row => <Popup style={{ backgroundColor: "rgb(0,123,255)" }} trigger={<button style={{ fontSize: "11px", color: "white", borderColor: "rgb(0,123,255)", backgroundColor: "rgb(0,123,255)" }}> Ver más..</button>} position="top center">
+                            <div>{row.nomcli2}</div>
+                        </Popup >
+                    },
                     { name: 'Cxc', selector: 'cxc', sortable: true, width: "80px", right: true, }
                 ],
                 data: res.data.registros
@@ -92,16 +96,15 @@ export default class ListSales extends Component {
 
     render() {
         return (
-            
             <div className="container-fluid" style={{ minHeight: "85vh", width: "95%" }} >
-                <div className="table-responsive" >
-                    <div style={{ textAlign: "right", color: "	rgb(31, 56, 175 )"}}>
+                <div >
+                    <div style={{ textAlign: "right", color: "	rgb(31, 56, 175 )" }}>
                         <svg id="check" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
                             <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                         </svg>
                         <label>{this.state.user_session} </label>
                     </div>
-                    
+
                     <div onClick={() => this.changeOptions(this.state.cont)}>
                         <DataTableExtensions print={false} export={false} filterPlaceholder={"Buscar"}{...this.state.params} >
                             <DataTable

@@ -7,7 +7,8 @@ export default class FormLogin extends Component {
     //BACKEND_URL = "http://localhost:4000"
     state = {
         user: '',
-        pass_user: ''
+        pass_user: '',
+        width_r: ''
     }
 
     //event chance typing
@@ -78,11 +79,13 @@ export default class FormLogin extends Component {
 
     async componentDidMount() {
         document.getElementById('err_log').style.display = 'None'
+        this.setState({width_r: (document.getElementById("a").clientHeight*0.6.toString()+"px") })
     }
 
     render() {
         return (
-            <div className="container p-4" style={{ height: "200px", width: "322px", marginTop: "150px", marginBottom: "370px" }}>
+            <div id = "a" className="container-fluid" style={{ minHeight: "85vh", width: this.state.width_r  }} >
+            <div className="container p-4" style={{ width: "100%%", marginTop: "100px" }}>
                 <div className="card text-center">
                     <div className="card-header">
                         <h4>Login</h4>
@@ -137,10 +140,10 @@ export default class FormLogin extends Component {
                                 <Link to="/recuperar">¿Olvidó su contraseña?</Link>
                             </div>
 
-                            <div style={{ fontSize: "11px" }}>
+                            {/*<div style={{ fontSize: "11px" }}>
                                 <label>No tiene cuenta.</label>
                                 <Link to="/registro"> Cree una</Link>
-                            </div>
+        </div>*/}
                             {/*Decide local Storage or session Storage */}
                             <div className="form-check" style={{ marginTop: "30px", marginBottom: "25px" }}>
                                 <input className="form-check-input" type="checkbox" id="session" />
@@ -153,6 +156,9 @@ export default class FormLogin extends Component {
                     </form>
                 </div>
             </div>
+
+            </div>
+           
         )
     }
 }

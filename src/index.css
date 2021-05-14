@@ -8,3 +8,12 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+footer {
+    background-color: rgb(25, 118, 210);
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    text-align: center;
+    bottom: 0;
+    position: relative;
+}

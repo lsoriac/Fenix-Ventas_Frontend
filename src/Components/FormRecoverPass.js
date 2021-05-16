@@ -18,14 +18,23 @@ export default class FormRecoverPass extends Component {
 
     onSubmit = async e => {
         e.preventDefault();
-        const emailSend = {
+        const updatePass = {
             email: this.state.email,
         }
         try {
-            const res = await axios.post('https://fenix-ventas-backend.herokuapp.com/recover', emailSend)
+            //Request backend
+            const res = await axios.put(process.env.REACT_APP_URL_BACKEND + 'recover', updatePass)
+            console.log(res);
             if (res.data.status) {
+                const emailSend = {
+                    email: this.state.email,
+                    param:  res.data.param 
+                }
+                //Request backend
+                const res2 = await axios.post(process.env.REACT_APP_URL_BACKEND + 'recover', emailSend)
+                console.log(res2);
                 document.getElementById('h').style.display = 'None'
-                this.setState({ desc: "Información de Seguridad Actualizada.", content: "Su nueva contraseña fue enviada al correo." })
+                this.setState({ desc: "Información de Seguridad Actualizada.", content: "Su nueva contraseña fue enviada al correo. En caso de no recibir el correo, contacte con el administrador" })
                 document.getElementById('message').style.display = 'Block'
                 document.getElementById('log').style.display = 'Block'
                 document.getElementById('send').style.display = 'None'

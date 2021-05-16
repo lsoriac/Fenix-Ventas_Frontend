@@ -3,8 +3,6 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 export default class FormRegister extends Component {
-    BACKEND_URL = "https://fenix-ventas-backend.herokuapp.com"
-    //BACKEND_URL = "http://localhost:4000"
     state = {
         name_user: '',
         user: '',
@@ -143,9 +141,8 @@ export default class FormRegister extends Component {
                     usuario: this.state.user,
                     email: this.state.email
                 }
-                //Request to backend - create new user
-                const res = await axios.post(this.BACKEND_URL+ "/register", newUser)
-                console.log(res);
+                //Request backend
+                const res = await axios.post(process.env.REACT_APP_URL_BACKEND + 'register', newUser)
                 window.location.href = '/'
             } else {
                 //set input values

@@ -3,8 +3,6 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 export default class FormLogin extends Component {
-    BACKEND_URL = "https://fenix-ventas-backend.herokuapp.com"
-    //BACKEND_URL = "http://localhost:4000"
     state = {
         user: '',
         pass_user: '',
@@ -28,12 +26,11 @@ export default class FormLogin extends Component {
         let error = false
         let data = {}
         let res = {}
-        //query to backend
         try {
-            res = await axios.post(this.BACKEND_URL + "/login", login)
+            //Request backend
+            res = await axios.post(process.env.REACT_APP_URL_BACKEND + 'login', login)
         } catch (err) {
             error = true
-            //console.log(err.response);
             this.setState({
                 user: "",
                 pass_user: ""

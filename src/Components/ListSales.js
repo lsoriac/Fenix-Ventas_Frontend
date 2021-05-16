@@ -8,8 +8,6 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 export default class ListSales extends Component {
-    BACKEND_URL = "https://fenix-ventas-backend.herokuapp.com"
-    //BACKEND_URL = "http://localhost:4000"
     state = {
         cont: 0,
         list_sales: [],
@@ -32,8 +30,8 @@ export default class ListSales extends Component {
             }
             //set user
             this.setState({ user_session: "Bienvenido " + (data.user[0].nombre) })
-            //query to backend -  need token verify
-            const res = await axios.get(this.BACKEND_URL + '/ventas', { headers })
+            //Request backend -  need token verify
+            const res = await axios.get(process.env.REACT_APP_URL_BACKEND + 'ventas', { headers })
             this.setState({ list_sales: res.data.registros })
             //style datatable
             const dat = {
